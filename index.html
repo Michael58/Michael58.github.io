@@ -56,6 +56,56 @@
     }
     </script>
 
+    <!-- FAQ Schema for SEO -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+            {
+                "@type": "Question",
+                "name": "How much does a web scraping project cost?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "It depends on complexity, scale, and anti-bot protection. Single-site product scrapers: $400-800. Anti-bot bypass projects (Cloudflare/Akamai): $1,500-4,000. Multi-state government data: $3,000-6,000. Ongoing data pipelines: $500-1,500/month. Most projects fall in the $1,000-2,000 range."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Can you scrape websites with anti-bot protection?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Yes. I specialize in sites that block standard scraping tools, including sites protected by Cloudflare, Akamai, Datadome, PerimeterX, and custom anti-bot systems. If other scrapers got blocked, that's exactly the kind of project I take on."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Is web scraping legal?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Generally yes, for publicly available data. The 2022 hiQ vs. LinkedIn ruling established that scraping public data does not violate the Computer Fraud and Abuse Act. I don't scrape data behind logins without authorization or personal data for prohibited purposes."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "How long does a web scraping project take?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Simple scrapers: 2-5 days. Complex projects with anti-bot bypass: 1-3 weeks. Multi-state or large-scale systems: 3-6 weeks."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "What if the website changes and the scraper breaks?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "For one-time projects, I include a 30-day bug fix period after delivery. For ongoing data needs, I offer maintenance retainers that include monitoring, updates when sites change, and priority support."
+                }
+            }
+        ]
+    }
+    </script>
+
     <link rel="stylesheet" href="styles.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -86,8 +136,16 @@
                     <span class="nav-number">04</span>
                     <span class="nav-text">Work</span>
                 </a>
-                <a href="#contact" class="nav-item">
+                <a href="#testimonials" class="nav-item">
                     <span class="nav-number">05</span>
+                    <span class="nav-text">Reviews</span>
+                </a>
+                <a href="#faq" class="nav-item">
+                    <span class="nav-number">06</span>
+                    <span class="nav-text">FAQ</span>
+                </a>
+                <a href="#contact" class="nav-item">
+                    <span class="nav-number">07</span>
                     <span class="nav-text">Contact</span>
                 </a>
             </nav>
@@ -137,10 +195,6 @@
                         <div class="stat">
                             <span class="stat-value">50+</span>
                             <span class="stat-label">Clients</span>
-                        </div>
-                        <div class="stat">
-                            <span class="stat-value">100%</span>
-                            <span class="stat-label">Success</span>
                         </div>
                     </div>
                     <div class="cta-group">
@@ -433,10 +487,118 @@
                 </div>
             </section>
 
+            <!-- Testimonials Section -->
+            <section id="testimonials" class="section">
+                <div class="section-label">
+                    <span class="label-number">05</span>
+                    <span class="label-line"></span>
+                    <span class="label-text">Reviews</span>
+                </div>
+                <div class="section-content">
+                    <h2 class="section-title">Client Reviews</h2>
+                    <div class="testimonials-list">
+                        <div class="testimonial-item">
+                            <div class="testimonial-header">
+                                <span class="testimonial-project">WordPress Product Feeds</span>
+                                <div class="testimonial-rating">
+                                    <span class="stars">★★★★★</span>
+                                    <span class="rating-value">5.0</span>
+                                </div>
+                            </div>
+                            <p class="testimonial-text">"Michal is easy to work with and delivers perfect code. Pleasant communication, too. No complaints. Thank you Michal!"</p>
+                            <span class="testimonial-date">Nov 2022 - Sep 2025</span>
+                        </div>
+                        <div class="testimonial-item">
+                            <div class="testimonial-header">
+                                <span class="testimonial-project">Reddit Scraper</span>
+                                <div class="testimonial-rating">
+                                    <span class="stars">★★★★★</span>
+                                    <span class="rating-value">5.0</span>
+                                </div>
+                            </div>
+                            <p class="testimonial-text">"Michal worked very diligently and was able to complete the task precisely as asked. He even had the finished products submitted a day before the deadline. I would highly recommend as his knowledge with machine learning is incomparable. I look forward to working with him again!"</p>
+                            <span class="testimonial-date">Apr 2021 - May 2021</span>
+                        </div>
+                        <div class="testimonial-item">
+                            <div class="testimonial-header">
+                                <span class="testimonial-project">Social Media & News Scraper</span>
+                                <div class="testimonial-rating">
+                                    <span class="stars">★★★★★</span>
+                                    <span class="rating-value">5.0</span>
+                                </div>
+                            </div>
+                            <p class="testimonial-text">"Had a great experience. Timely and cost-effective delivery of a web-scraper. Kept it running without glitches for the time-period we needed. Handled feedback and changes. Would definitely work with Michael again."</p>
+                            <span class="testimonial-date">Sep 2020 - Dec 2020</span>
+                        </div>
+                    </div>
+                    <a href="https://www.upwork.com/freelancers/~01f8dd05d0b1087e79" target="_blank" rel="noopener noreferrer" class="btn btn-ghost testimonials-cta">View All Reviews on Upwork</a>
+                </div>
+            </section>
+
+            <!-- FAQ Section -->
+            <section id="faq" class="section">
+                <div class="section-label">
+                    <span class="label-number">06</span>
+                    <span class="label-line"></span>
+                    <span class="label-text">FAQ</span>
+                </div>
+                <div class="section-content">
+                    <h2 class="section-title">Frequently Asked Questions</h2>
+                    <div class="faq-list">
+                        <details class="faq-item">
+                            <summary class="faq-question">How much does a web scraping project cost?</summary>
+                            <div class="faq-answer">
+                                <p>It depends on complexity, scale, and anti-bot protection. Here are real project examples:</p>
+                                <ul class="faq-pricing">
+                                    <li><strong>Single-site product scraper</strong> (e-commerce, 10k products): $400-800</li>
+                                    <li><strong>Social media / news scraper</strong> (multiple sources): $800-1,500</li>
+                                    <li><strong>Anti-bot bypass project</strong> (Cloudflare/Akamai protected): $1,500-4,000</li>
+                                    <li><strong>Multi-state government data</strong> (50 states, varying structures): $3,000-6,000</li>
+                                    <li><strong>Ongoing data pipeline</strong> (daily runs, monitoring, maintenance): $500-1,500/month</li>
+                                </ul>
+                                <p>Most projects fall in the $1,000-2,000 range. Complex anti-bot or enterprise-scale projects can exceed $10,000.</p>
+                            </div>
+                        </details>
+                        <details class="faq-item">
+                            <summary class="faq-question">Can you scrape [specific website]?</summary>
+                            <div class="faq-answer">
+                                <p>Probably. I specialize in sites that block standard scraping tools. This includes sites protected by Cloudflare, Akamai, Datadome, PerimeterX, and custom anti-bot systems. If you've tried other scrapers and they got blocked, that's exactly the kind of project I take on.</p>
+                                <p>Send me the URL and I'll give you an honest assessment of feasibility and approach.</p>
+                            </div>
+                        </details>
+                        <details class="faq-item">
+                            <summary class="faq-question">Is web scraping legal?</summary>
+                            <div class="faq-answer">
+                                <p>Generally yes, for publicly available data. The 2022 hiQ vs. LinkedIn ruling established that scraping public data does not violate the Computer Fraud and Abuse Act. However, I don't scrape data behind logins without authorization, personal data for prohibited purposes, or content protected by clear legal restrictions.</p>
+                                <p>I'm happy to discuss the specifics of your project to ensure we're on solid legal ground.</p>
+                            </div>
+                        </details>
+                        <details class="faq-item">
+                            <summary class="faq-question">How long does a project take?</summary>
+                            <div class="faq-answer">
+                                <p>Simple scrapers: 2-5 days. Complex projects with anti-bot bypass: 1-3 weeks. Multi-state or large-scale systems: 3-6 weeks. I'll give you a realistic timeline after understanding your requirements. I don't pad estimates, but I also don't promise miracles.</p>
+                            </div>
+                        </details>
+                        <details class="faq-item">
+                            <summary class="faq-question">What if the website changes and the scraper breaks?</summary>
+                            <div class="faq-answer">
+                                <p>Websites change. It happens. For one-time projects, I include a 30-day bug fix period after delivery. For ongoing data needs, I offer maintenance retainers that include monitoring, updates when sites change, and priority support. Most clients with critical data pipelines opt for this.</p>
+                            </div>
+                        </details>
+                        <details class="faq-item">
+                            <summary class="faq-question">What data formats do you deliver?</summary>
+                            <div class="faq-answer">
+                                <p>Whatever you need: JSON, CSV, Excel, direct database insertion (PostgreSQL, MySQL, MongoDB), API endpoints, or webhook delivery. I'll match your existing systems. If you're not sure what format works best, I'll recommend based on your use case.</p>
+                            </div>
+                        </details>
+                    </div>
+                </div>
+            </section>
+
             <!-- Contact Section -->
             <section id="contact" class="section section-contact">
                 <div class="section-label">
-                    <span class="label-number">05</span>
+                    <span class="label-number">07</span>
                     <span class="label-line"></span>
                     <span class="label-text">Contact</span>
                 </div>
@@ -521,6 +683,8 @@
         <a href="#services">Services</a>
         <a href="#stack">Stack</a>
         <a href="#work">Work</a>
+        <a href="#testimonials">Reviews</a>
+        <a href="#faq">FAQ</a>
         <a href="#contact">Contact</a>
     </nav>
 
