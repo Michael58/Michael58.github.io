@@ -1,14 +1,22 @@
-// Mobile menu toggle
+// ============================================
+// Navigation scroll effect
+// ============================================
+const nav = document.querySelector('.nav');
 const menuToggle = document.querySelector('.menu-toggle');
 const mobileNav = document.querySelector('.mobile-nav');
 
+window.addEventListener('scroll', () => {
+    nav.classList.toggle('scrolled', window.scrollY > 50);
+});
+
+// Mobile menu
 menuToggle.addEventListener('click', () => {
     menuToggle.classList.toggle('active');
     mobileNav.classList.toggle('active');
     document.body.style.overflow = mobileNav.classList.contains('active') ? 'hidden' : '';
 });
 
-// Close mobile menu when clicking a link
+// Close mobile menu on link click
 mobileNav.querySelectorAll('a').forEach(link => {
     link.addEventListener('click', () => {
         menuToggle.classList.remove('active');
@@ -17,150 +25,109 @@ mobileNav.querySelectorAll('a').forEach(link => {
     });
 });
 
-// Smooth scroll for anchor links
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-        const target = document.querySelector(this.getAttribute('href'));
-        if (target) {
-            target.scrollIntoView({
-                behavior: 'smooth',
-                block: 'start'
-            });
+// ============================================
+// FAQ Accordion
+// ============================================
+document.querySelectorAll('.faq-question').forEach(button => {
+    button.addEventListener('click', () => {
+        const item = button.parentElement;
+        const isActive = item.classList.contains('active');
+
+        // Close all
+        document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('active'));
+
+        // Open clicked (if it wasn't already open)
+        if (!isActive) {
+            item.classList.add('active');
         }
     });
 });
 
-// Active nav item on scroll
-const sections = document.querySelectorAll('section[id]');
-const navItems = document.querySelectorAll('.sidebar-nav .nav-item');
+// ============================================
+// Tech Stack collapsible toggle
+// ============================================
+const stackToggle = document.querySelector('.stack-toggle');
+const stackContent = document.querySelector('.stack-content');
 
-function updateActiveNav() {
-    const scrollY = window.pageYOffset;
-
-    sections.forEach(section => {
-        const sectionTop = section.offsetTop - 150;
-        const sectionHeight = section.offsetHeight;
-        const sectionId = section.getAttribute('id');
-
-        if (scrollY >= sectionTop && scrollY < sectionTop + sectionHeight) {
-            navItems.forEach(item => {
-                item.classList.remove('active');
-                if (item.getAttribute('href') === `#${sectionId}`) {
-                    item.classList.add('active');
-                }
-            });
-        }
+if (stackToggle && stackContent) {
+    stackToggle.addEventListener('click', () => {
+        const isOpen = stackContent.classList.contains('open');
+        stackContent.classList.toggle('open');
+        stackToggle.setAttribute('aria-expanded', !isOpen);
     });
 }
 
-window.addEventListener('scroll', updateActiveNav);
-updateActiveNav();
-
-// Form submission handling
-const contactForm = document.querySelector('.contact-form');
-
-contactForm.addEventListener('submit', async (e) => {
-    e.preventDefault();
-
-    const submitBtn = contactForm.querySelector('.btn-submit');
-    const originalText = submitBtn.innerHTML;
-
-    // Show loading state
-    submitBtn.innerHTML = 'Sending...';
-    submitBtn.disabled = true;
-
-    try {
-        const formData = new FormData(contactForm);
-        const response = await fetch(contactForm.action, {
-            method: 'POST',
-            body: formData,
-            headers: {
-                'Accept': 'application/json'
-            }
-        });
-
-        if (response.ok) {
-            // Success
-            submitBtn.innerHTML = 'Message Sent!';
-            submitBtn.style.background = '#16a34a';
-            contactForm.reset();
-
-            setTimeout(() => {
-                submitBtn.innerHTML = originalText;
-                submitBtn.style.background = '';
-                submitBtn.disabled = false;
-            }, 3000);
-        } else {
-            throw new Error('Form submission failed');
-        }
-    } catch (error) {
-        // Error
-        submitBtn.innerHTML = 'Error - Try Again';
-        submitBtn.style.background = '#dc2626';
-
-        setTimeout(() => {
-            submitBtn.innerHTML = originalText;
-            submitBtn.style.background = '';
-            submitBtn.disabled = false;
-        }, 3000);
-    }
-});
-
-// Animate elements on scroll
+// ============================================
+// Scroll-triggered fade-in animations
+// ============================================
 const observerOptions = {
-    root: null,
-    rootMargin: '0px',
-    threshold: 0.1
+    threshold: 0.1,
+    rootMargin: '0px 0px -40px 0px'
 };
 
-const animateOnScroll = new IntersectionObserver((entries) => {
+const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
         if (entry.isIntersecting) {
             entry.target.classList.add('visible');
+            observer.unobserve(entry.target);
         }
     });
 }, observerOptions);
 
-// Apply animation to elements
-document.querySelectorAll('.service-item, .project-item, .stack-category').forEach(el => {
-    el.style.opacity = '0';
-    el.style.transform = 'translateY(20px)';
-    el.style.transition = 'opacity 0.4s ease, transform 0.4s ease';
-    animateOnScroll.observe(el);
-});
+document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
 
-// Add visible class styles
-const style = document.createElement('style');
-style.textContent = `
-    .service-item.visible,
-    .project-item.visible,
-    .stack-category.visible {
-        opacity: 1 !important;
-        transform: translateY(0) !important;
-    }
-`;
-document.head.appendChild(style);
-
-// Stagger animation for list items
-document.querySelectorAll('.services-list, .projects-list, .stack-grid').forEach(container => {
-    const items = container.querySelectorAll('.service-item, .project-item, .stack-category');
-    items.forEach((item, index) => {
-        item.style.transitionDelay = `${index * 0.1}s`;
+// ============================================
+// Smooth scroll for anchor links
+// ============================================
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+            e.preventDefault();
+            target.scrollIntoView({ behavior: 'smooth' });
+        }
     });
 });
 
-// Project expand/collapse functionality
-document.querySelectorAll('.project-expand-btn').forEach(btn => {
-    btn.addEventListener('click', (e) => {
-        e.stopPropagation();
-        const projectItem = btn.closest('.project-item');
-        const isExpanded = projectItem.classList.contains('expanded');
+// ============================================
+// Contact form submission with success state
+// ============================================
+const form = document.querySelector('.contact-form');
+const formSuccess = document.querySelector('.form-success');
 
-        // Toggle expanded state
-        projectItem.classList.toggle('expanded');
+if (form) {
+    form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const submitBtn = form.querySelector('.btn-submit');
+        const originalText = submitBtn.innerHTML;
 
-        // Update aria-expanded for accessibility
-        btn.setAttribute('aria-expanded', !isExpanded);
+        submitBtn.innerHTML = 'Sending...';
+        submitBtn.disabled = true;
+
+        try {
+            const response = await fetch(form.action, {
+                method: 'POST',
+                body: new FormData(form),
+                headers: { 'Accept': 'application/json' }
+            });
+
+            if (response.ok) {
+                // Hide form, show success message
+                form.hidden = true;
+                if (formSuccess) {
+                    formSuccess.hidden = false;
+                }
+            } else {
+                throw new Error('Form submission failed');
+            }
+        } catch (error) {
+            submitBtn.innerHTML = 'Error. Try again.';
+            submitBtn.classList.add('btn-error');
+            setTimeout(() => {
+                submitBtn.innerHTML = originalText;
+                submitBtn.classList.remove('btn-error');
+                submitBtn.disabled = false;
+            }, 3000);
+        }
     });
-});
+}
